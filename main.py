@@ -27,7 +27,7 @@ if __name__ == '__main__':
     parser.add_argument('--camera_traj', type=str, default='', help="nerfstudio compatible json file for camera trajactory")
 
     ### dataset options
-    parser.add_argument('--data_format', type=str, default='nerf', choices=['nerf', 'colmap', 'dtu'])
+    parser.add_argument('--data_format', type=str, default='nerf', choices=['nerf', 'colmap', 'dtu', 'glossy'])
     parser.add_argument('--train_split', type=str, default='train', choices=['train', 'trainval', 'all'])
     parser.add_argument('--preload', action='store_true', help="preload all data into GPU, accelerate training but use more GPU memory")
     parser.add_argument('--random_image_batch', action='store_true', help="randomly sample rays from all images per step in training stage 0, incompatible with enable_sparse_depth")
@@ -164,6 +164,8 @@ if __name__ == '__main__':
         from nerf.colmap_provider import ColmapDataset as NeRFDataset
     elif opt.data_format == 'dtu':
         from nerf.dtu_provider import NeRFDataset
+    elif opt.data_format == 'glossy':
+        from nerf.glossy_provider import NeRFDataset
     else: # 'nerf
         from nerf.provider import NeRFDataset
     

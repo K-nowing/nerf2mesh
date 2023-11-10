@@ -4,10 +4,10 @@ build/
 *.so
 
 tmp*
-data/
 data
+results
 trial*/
-.vs/
+.vscode/
 
 *.ckpt
 *wos*
